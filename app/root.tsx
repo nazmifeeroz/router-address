@@ -7,6 +7,7 @@ import {
 import type { Route } from './+types/root';
 
 import appStylesHref from './app.css?url';
+import { createEmptyContact } from './data';
 
 export function HydrateFallback() {
   return (
@@ -19,6 +20,12 @@ export function HydrateFallback() {
 
 export default function App() {
   return <Outlet />;
+}
+
+export async function action() {
+  const contact = await createEmptyContact();
+
+  return { contact };
 }
 
 // The Layout component is a special export for the root route.
